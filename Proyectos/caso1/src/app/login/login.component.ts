@@ -33,25 +33,31 @@ export class LoginComponent implements OnInit {
   on_login() {
 
     if (this.loginForm.valid) {
-      // let body = {
-      //   username: this.username,
-      //   password: this.password,
-      // }
-      //
-      // this.http.postPromise('login', body, this.http.postHeaderEmpty('application/json')).then(
-      //   (res: any) => {
-      //     console.log(res);
-      //     if (res.length > 0) {
-      //       this.router.navigate(['/home']);
-      //     } else {
-      //       alert("Usuario o clave incorrecta");
-      //     }
-      //   },
-      //   err => {
-      //
-      //   }
-      // )
+      let body = {
+        username: this.username,
+        password: this.password,
+      }
+
+      this.http.postPromise('login', body, this.http.postHeaderEmpty('application/json')).then(
+        (res: any) => {
+          console.log(res);
+          if (res.length > 0) {
+            this.router.navigate(['/home']);
+          } else {
+            alert("Usuario o clave incorrecta");
+          }
+        },
+        err => {
+
+        }
+      )
     } else {
+      for (let field in this.loginForm.controls) { // 'field' is a string
+        let control: any = this.loginForm.get(field); // 'control' is a FormControl
+        if (control.valid === false) {
+          control.touched = true;
+        }
+      }
       alert("Campos Incorrectos");
     }
   }

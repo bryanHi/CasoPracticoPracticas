@@ -9,9 +9,11 @@ function createRouter(db) {
         res.json({ message: "Sistema APIS en linea" })
     });
 
-    router.post('/insert', (req, res, next) => {
+    router.post('/create/user', (req, res, next) => {
+        // var encode = btoa("12345678");
+        // console.log(encode);
         db.query(
-            'INSERT INTO `usuarios` (`ID_USUARIO`, `CEDULA_USUARIO`, `NOMBRE`, `APELLIDO`, `CORREO`, `CLAVE`) VALUES (?,?,?,?,?,?)', [req.body.id, req.body.cedula, req.body.nombre, req.body.apellido, req.body.correo, req.body.clave],
+            'INSERT INTO `USUARIOS` (`CEDULA_USUARIOS`, `NOMBRE_USUARIOS`, `APELLIDO_USUARIOS`, `USERNAME_USUARIOS`, `PASSWORD_USUARIOS`) VALUES (?,?,?,?,?)', [req.body.cedula, req.body.nombre, req.body.apellido, req.body.username, req.body.password],
             (error) => {
                 if (error) {
                     console.error(error);
@@ -36,6 +38,7 @@ function createRouter(db) {
       }
         );
     });
+
     return router;
 }
 
