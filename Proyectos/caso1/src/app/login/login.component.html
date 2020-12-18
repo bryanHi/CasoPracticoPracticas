@@ -1,88 +1,35 @@
-
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="form">
-
-      <!-- <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
-      </ul> -->
-
-      <div class="tab-content">
-        <!-- <div id="signup">
-          <h1>Sign Up for Free</h1>
-
-          <form action="/" method="post">
-
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                First Name<span class="req">*</span>
-              </label>
-              <input type="text" required autocomplete="off" />
-            </div>
-
-            <div class="field-wrap">
-              <label>
-                Last Name<span class="req">*</span>
-              </label>
-              <input type="text"required autocomplete="off"/>
-            </div>
+<div class="login-page">
+  <div class="form">
+    <!-- <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form> -->
+    <form class="login-form" [formGroup]="loginForm">
+      <div class="form-group">
+        <input type="text" placeholder="username" formControlName="username" class="form-control" [(ngModel)]="login.username" />
+        <div *ngIf="loginForm.controls.username.errors && (loginForm.controls.username.dirty || loginForm.controls.username.touched)" class="alert-danger">
+          <div *ngIf="loginForm.controls.username.errors.required">
+            El campo username es requerido
           </div>
-
-          <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
+          <div *ngIf="loginForm.controls.username.errors.email">
+            Email incorrecto
           </div>
-
-          <div class="field-wrap">
-            <label>
-              Set A Password<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off"/>
-          </div>
-
-          <button type="submit" class="button button-block">Get Started</button>
-
-          </form>
-
-        </div> -->
-
-        <div id="login">
-          <h1>Welcome Back!</h1>
-
-          <form action="/" method="post">
-
-            <div class="field-wrap">
-            <label>
-              Email Address<span class="req" >*</span>
-            </label>
-            <input type="email" [(ngModel)]="correo" name="correo"/>
-          </div>
-
-          <div class="field-wrap">
-            <label>
-              Password<span class="req">*</span>
-            </label>
-            <input type="password" [(ngModel)]="clave" name="clave"/>
-          </div>
-
-          <!-- <p class="forgot"><a href="#">Forgot Password?</a></p> -->
-
-          <button class="button button-block" (click)="login()">Log In </button>
-
-          </form>
-
         </div>
+      </div>
 
-      </div><!-- tab-content -->
-
-</div> <!-- /form -->
-  </body>
-</html>
+      <div class="form-group">
+        <input type="password" placeholder="password" formControlName="password" class="form-control" [(ngModel)]="login.password" />
+        <div *ngIf="loginForm.controls.password.errors && (loginForm.controls.password.dirty || loginForm.controls.password.touched)" class="alert-danger">
+          <div *ngIf="loginForm.controls.password.errors.required">
+            El campo password es requerido
+          </div>
+        </div>
+      </div>
+      <button (click)="on_login()">login</button>
+      <p class="message">Not registered? <a routerLink="/signup">Create an account</a></p>
+    </form>
+  </div>
+</div>

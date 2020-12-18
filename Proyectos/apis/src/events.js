@@ -6,7 +6,7 @@ function createRouter(db) {
 
     // the routes are defined here
     router.get('/test', (req, res, next) => {
-        res.json({ message: "Welcome to bezkoder application." })
+        res.json({ message: "Sistema APIS en linea" })
     });
 
     router.post('/insert', (req, res, next) => {
