@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from '../services/http/http.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,17 +34,21 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
       let body = {
-        username: this.username,
-        password: this.password,
+        username: this.login.username,
+        password: this.login.password,
       }
 
       this.http.postPromise('login', body, this.http.postHeaderEmpty('application/json')).then(
         (res: any) => {
           console.log(res);
           if (res.length > 0) {
-            this.router.navigate(['/home']);
+            const navigationExtras: NavigationExtras = {
+              state: {
+                res
+            };
+            this.router.navigate(['/home', navigationExtras]);
           } else {
-            alert("Usuario o clave incorrecta");
+            alert("Usuario o password incorrecta");
           }
         },
         err => {

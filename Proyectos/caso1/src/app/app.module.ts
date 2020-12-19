@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { SignupComponent } from './signup/signup.component'
+import { SignupComponent } from './signup/signup.component';
+import { SolicitudBonoComponent } from './solicitud-bono/solicitud-bono.component';
+import { ObtenerClientesComponent } from './obtener-clientes/obtener-clientes.component'
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { SignupComponent } from './signup/signup.component'
     HomeComponent,
     LoginComponent,
     SignupComponent,
+    SolicitudBonoComponent,
+    ObtenerClientesComponent,
   ],
   imports: [
     BrowserModule,

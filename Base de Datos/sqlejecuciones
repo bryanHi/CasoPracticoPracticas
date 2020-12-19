@@ -1,8 +1,0 @@
-INSERT INTO `usuarios` (`CEDULAID`, `NOMBRE`, `APELLIDO`, `ESTADO`, `CORREO`, `CONTRASENIA`) VALUES ('1723526172', 'Bryan', 'Hidalgo', 'Activo', 'dr@gmail.com', '123456rio456')
-INSERT INTO `usuarios` (`CEDULAID`, `NOMBRE`, `APELLIDO`, `ESTADO`, `CORREO`, `CONTRASENIA`) VALUES ('1723526178', 'Danie;', 'Hidalgo', 'Activo', 'dr@gmail.com', '123456rio456')
-inner join simple usuarios  perfilusuarios
-SELECT usuarios.NOMBRE, usuarios.APELLIDO, perfilusuarios.ID_PERFILES_USUARIO FROM usuarios INNER JOIN perfilusuarios ON usuarios.ID_USUARIO=perfilusuarios.ID_USUARIO
-inner join complejo usuarios perfil estado
-SELECT usuarios.NOMBRE, usuarios.APELLIDO, perfil.NOMBRE_PERFILES_USUARIO, estado.ESTADO FROM usuarios INNER JOIN perfilusuarios ON usuarios.ID_USUARIO=perfilusuarios.ID_USUARIO INNER JOIN perfil on perfil.ID_PERFILES_USUARIO=perfilusuarios.ID_PERFILES_USUARIO INNER JOIN estado on estado.IDESTADO=perfilusuarios.IDESTADO
-inner join complejo usuarios perfil estado donde estado negado
-SELECT usuarios.NOMBRE, usuarios.APELLIDO, perfil.NOMBRE_PERFILES_USUARIO, estado.ESTADO FROM usuarios INNER JOIN perfilusuarios ON usuarios.ID_USUARIO=perfilusuarios.ID_USUARIO INNER JOIN perfil on perfil.ID_PERFILES_USUARIO=perfilusuarios.ID_PERFILES_USUARIO INNER JOIN estado on estado.IDESTADO=perfilusuarios.IDESTADO where estado.IDESTADO=1
